@@ -1,5 +1,8 @@
 package com.tit.greetingapp.service;
 
+import com.tit.greetingapp.model.GreetingEntity;
+import com.tit.greetingapp.repository.GreetingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,5 +22,12 @@ public class GreetingService {
         } else {
             return "Hello " + firstName + " " + lastName;
         }
+    }
+
+    @Autowired
+    private GreetingRepository greetingRepository;
+
+    public GreetingEntity saveGreeting(GreetingEntity greeting) {
+        return greetingRepository.save(greeting);
     }
 }

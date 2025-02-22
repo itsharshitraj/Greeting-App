@@ -1,11 +1,9 @@
 package com.tit.greetingapp.controller;
 
+import com.tit.greetingapp.model.GreetingEntity;
 import com.tit.greetingapp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/hello")
@@ -31,4 +29,11 @@ public class GreetingController {
                             @RequestParam(required = false) String lastName) {
         return greetingService.getPersonalizedGreeting(firstName, lastName);
     }
+
+    // UC4 - Save Greeting
+    @PostMapping("/save")
+    public GreetingEntity saveGreeting(@RequestBody GreetingEntity greeting) {
+        return greetingService.saveGreeting(greeting);
+    }
+
 }
