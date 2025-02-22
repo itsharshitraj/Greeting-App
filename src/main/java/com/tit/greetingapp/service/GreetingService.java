@@ -30,4 +30,10 @@ public class GreetingService {
     public GreetingEntity saveGreeting(GreetingEntity greeting) {
         return greetingRepository.save(greeting);
     }
+
+    public GreetingEntity getGreetingById(Long id) {
+        return greetingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Greeting not found with ID: " + id));
+    }
+
 }
