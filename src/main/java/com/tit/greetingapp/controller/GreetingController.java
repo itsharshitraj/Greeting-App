@@ -5,6 +5,8 @@ import com.tit.greetingapp.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/hello")
 public class GreetingController {
@@ -41,4 +43,11 @@ public class GreetingController {
     public GreetingEntity getGreetingById(@PathVariable Long id) {
         return greetingService.getGreetingById(id);
     }
+
+    // UC6 - Get All Greetings
+    @GetMapping("/all")
+    public List<GreetingEntity> getAllGreetings() {
+        return greetingService.getAllGreetings();
+    }
+
 }
